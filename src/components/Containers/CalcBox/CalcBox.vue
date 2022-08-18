@@ -53,9 +53,7 @@ export default {
       } else {
         document.getElementById("result").style.visibility = "hidden";
         document.getElementById("spanMsg").style.visibility = "visible";
-      }
-      console.log(this.weightSelected, this.heightSelected);
-
+      }     
       if (this.imc <= 18.5) {
         this.condition = "Abaixo do Peso";
       } else if (this.imc <= 24.9) {
@@ -74,7 +72,6 @@ export default {
     getValue() {
       this.weightSelected = document.getElementById("weightInput").value;
       this.heightSelected = document.getElementById("heightInput").value;
-      console.log(this.heightSelected, this.heightSelected);
     },
   },
   beforeMount() {
