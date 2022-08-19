@@ -2,7 +2,7 @@
   <div class="input-container">
     <div class="input-labels">
       <label>{{ labelInput }}</label>
-      <output>{{ valueSelected }}</output>
+      <output>{{ valueSelected }} {{ measure }}</output>
     </div>
     <input
       type="range"
@@ -11,7 +11,7 @@
       :min="minRange"
       :max="maxRange"
       :step="step"
-      @change="event"
+      @input="event"
     />
   </div>
 </template>
@@ -27,6 +27,7 @@ export default {
     maxRange: String,
     step: String,
     event: Function,
+    measure:String
   },
 };
 </script>

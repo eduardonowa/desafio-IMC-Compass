@@ -9,6 +9,7 @@
       step="1"
       :valueSelected="weightSelected"
       :event="getValue"
+      measure="kg"
     />
     <InputRange
       inputId="heightInput"
@@ -18,6 +19,7 @@
       step="0.01"
       :valueSelected="heightSelected"
       :event="getValue"
+      measure="m"
     />
     <button class="calcButton" @click.prevent="calcImc">{{ buttonTxt }}</button>
     <span id="spanMsg">{{ spanMsg }}</span>
@@ -45,15 +47,17 @@ export default {
   },
   methods: {
     calcImc() {
+      const $ = document.getElementById.bind(document);
       if (this.weightSelected != 0) {
-        const resultado = this.weightSelected / Math.pow(this.heightSelected, 2);
+        const resultado =
+          this.weightSelected / Math.pow(this.heightSelected, 2);
         this.imc = resultado.toFixed(2);
-        document.getElementById("result").style.visibility = "visible";
-        document.getElementById("spanMsg").style.visibility = "hidden";
+        $("result").style.visibility = "visible";
+        $("spanMsg").style.visibility = "hidden";
       } else {
-        document.getElementById("result").style.visibility = "hidden";
-        document.getElementById("spanMsg").style.visibility = "visible";
-      }     
+        $("result").style.visibility = "hidden";
+        $("spanMsg").style.visibility = "visible";
+      }
       if (this.imc <= 18.5) {
         this.condition = "Abaixo do Peso";
       } else if (this.imc <= 24.9) {
